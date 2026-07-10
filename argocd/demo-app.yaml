@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: REPLACE_WITH_YOUR_GITHUB_REPO_URL
+    repoURL: https://github.com/876751/K8s-learning.git
     targetRevision: main
     path: apps/demo
   destination:

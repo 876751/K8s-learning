@@ -11,20 +11,19 @@
 ## 学习路径
 
 1. 修改 `apps/demo/deployment.yaml` 的 `replicas` 或镜像标签并推送到 GitHub。
-2. 将 `argocd/demo-app.yaml` 中的 `REPLACE_WITH_YOUR_GITHUB_REPO_URL` 替换为你的仓库 HTTPS 地址。
-3. 应用 Application：
+2. 应用 Application：
 
    ```sh
    kubectl apply -f argocd/demo-app.yaml
    ```
 
-4. 打开 Argo CD（另一个终端执行）：
+3. 打开 Argo CD（另一个终端执行）：
 
    ```sh
    ./scripts/argocd-ui.sh
    ```
 
-5. 初始账号是 `admin`，密码用：
+4. 初始账号是 `admin`，密码用：
 
    ```sh
    ./scripts/argocd-initial-password.sh
