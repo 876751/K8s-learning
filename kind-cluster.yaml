@@ -1,0 +1,29 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: k8s-learning  # 集群名，对应 kubectl 上下文 kind-k8s-learning
+nodes:
+  # 控制平面节点
+  - role: control-plane
+    # 映射宿主机端口，后续部署 Ingress、NodePort 服务可直接访问
+    extraPortMappings:
+      - containerPort: 80
+        hostPort: 80
+        protocol: TCP
+      - containerPort: 443
+        hostPort: 443
+        protocol: TCP
+      - containerPort: 30000
+        hostPort: 30000
+        protocol: TCP
+  # 3个工作节点
+  - role: worker
+  - role: worker
+  - role: worker
+
+# 预配置所有节点的 containerd，信任 Harbor 私有 HTTP 仓库
+containerdConfigPatches:
+  - |-
+    [plugins."io.containerd.grpc.v1.cri".registry.mirrors."harbor.local"]
+      endpoint = ["http://harbor.local"]
+    [plugins."io.containerd.grpc.v1.cri".registry.configs."harbor.local".tls]
+      insecure_skip_verify = true
