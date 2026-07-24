@@ -1,1 +1,3 @@
 .DS_Store
+harbor/
+harbor-offline-installer-aarch64-v2.13.0.tar

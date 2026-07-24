@@ -24,6 +24,6 @@ nodes:
 containerdConfigPatches:
   - |-
     [plugins."io.containerd.grpc.v1.cri".registry.mirrors."harbor.local"]
-      endpoint = ["http://harbor.local"]
+      endpoint = ["http://harbor.local:8080"]
     [plugins."io.containerd.grpc.v1.cri".registry.configs."harbor.local".tls]
       insecure_skip_verify = true
